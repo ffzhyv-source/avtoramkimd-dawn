@@ -1,0 +1,232 @@
+{{ 'frame-builder.css' | asset_url | stylesheet_tag }}
+
+<div class="fb" id="frameBuilder">
+  <div class="fb__header">
+    <h1 class="fb__title">Создай свою рамку</h1>
+    <p class="fb__subtitle">Настройте рамку под себя — выберите цвет, добавьте текст и увидьте результат в реальном времени</p>
+  </div>
+
+  <div class="fb__layout">
+    <!-- LEFT: Preview -->
+    <div class="fb__preview-wrap">
+      <div class="fb__preview-sticky">
+        <div class="fb__preview" id="fbPreview">
+          <div class="fb__frame" id="fbFrame">
+            <div class="fb__frame-top" id="fbFrameTop">
+              <span class="fb__frame-text fb__frame-text--top" id="fbTextTop">{{ section.settings.default_text_top }}</span>
+            </div>
+            <div class="fb__plate">
+              <div class="fb__plate-inner">
+                <div class="fb__plate-eu">
+                  <span class="fb__plate-eu-stars">★★★</span>
+                  <span class="fb__plate-eu-code">MD</span>
+                </div>
+                <div class="fb__plate-number">
+                  <span id="fbPlateNumber">A 012 BCD</span>
+                </div>
+              </div>
+            </div>
+            <div class="fb__frame-bottom" id="fbFrameBottom">
+              <span class="fb__frame-text fb__frame-text--bottom" id="fbTextBottom">{{ section.settings.default_text_bottom }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="fb__price-display">
+          <span class="fb__price-label">Итого:</span>
+          <span class="fb__price-value" id="fbPriceDisplay">{{ section.settings.base_price }} Lei</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Controls -->
+    <div class="fb__controls">
+      <!-- Step 1: Frame Color -->
+      <div class="fb__step">
+        <div class="fb__step-header">
+          <span class="fb__step-num">1</span>
+          <h3 class="fb__step-title">Цвет рамки</h3>
+        </div>
+        <div class="fb__colors" id="fbColors">
+          <button class="fb__color-btn fb__color-btn--active" data-color="#1a1a1a" data-name="Чёрный" style="background:#1a1a1a" title="Чёрный"></button>
+          <button class="fb__color-btn" data-color="#c0c0c0" data-name="Серебро" style="background:#c0c0c0" title="Серебро"></button>
+          <button class="fb__color-btn" data-color="#2c2c2c" data-name="Тёмный хром" style="background:linear-gradient(135deg,#2c2c2c,#555)" title="Тёмный хром"></button>
+          <button class="fb__color-btn" data-color="#c22d2d" data-name="Красный" style="background:#c22d2d" title="Красный"></button>
+          <button class="fb__color-btn" data-color="#1a3a5c" data-name="Тёмно-синий" style="background:#1a3a5c" title="Тёмно-синий"></button>
+          <button class="fb__color-btn" data-color="#f5f5f5" data-name="Белый" style="background:#f5f5f5;border:1px solid #ccc" title="Белый"></button>
+          <button class="fb__color-btn" data-color="#b8860b" data-name="Золото" style="background:#b8860b" title="Золото"></button>
+          <button class="fb__color-btn" data-color="#3a5a3a" data-name="Зелёный" style="background:#3a5a3a" title="Зелёный"></button>
+        </div>
+        <p class="fb__color-name" id="fbColorName">Чёрный</p>
+      </div>
+
+      <!-- Step 2: Top Text -->
+      <div class="fb__step">
+        <div class="fb__step-header">
+          <span class="fb__step-num">2</span>
+          <h3 class="fb__step-title">Текст сверху</h3>
+        </div>
+        <input
+          type="text"
+          class="fb__input"
+          id="fbInputTop"
+          maxlength="30"
+          placeholder="Например: MOLDOVA"
+          value="{{ section.settings.default_text_top }}"
+        >
+        <div class="fb__char-count"><span id="fbCharTop">{{ section.settings.default_text_top | size }}</span>/30</div>
+      </div>
+
+      <!-- Step 3: Bottom Text -->
+      <div class="fb__step">
+        <div class="fb__step-header">
+          <span class="fb__step-num">3</span>
+          <h3 class="fb__step-title">Текст снизу</h3>
+        </div>
+        <input
+          type="text"
+          class="fb__input"
+          id="fbInputBottom"
+          maxlength="30"
+          placeholder="Например: www.avtoramki.md"
+          value="{{ section.settings.default_text_bottom }}"
+        >
+        <div class="fb__char-count"><span id="fbCharBottom">{{ section.settings.default_text_bottom | size }}</span>/30</div>
+      </div>
+
+      <!-- Step 4: Text Color -->
+      <div class="fb__step">
+        <div class="fb__step-header">
+          <span class="fb__step-num">4</span>
+          <h3 class="fb__step-title">Цвет текста</h3>
+        </div>
+        <div class="fb__text-colors" id="fbTextColors">
+          <button class="fb__tcolor-btn fb__tcolor-btn--active" data-tcolor="#ffffff" title="Белый"><span style="background:#ffffff"></span></button>
+          <button class="fb__tcolor-btn" data-tcolor="#c0c0c0" title="Серебро"><span style="background:#c0c0c0"></span></button>
+          <button class="fb__tcolor-btn" data-tcolor="#ffd700" title="Золотой"><span style="background:#ffd700"></span></button>
+          <button class="fb__tcolor-btn" data-tcolor="#c22d2d" title="Красный"><span style="background:#c22d2d"></span></button>
+          <button class="fb__tcolor-btn" data-tcolor="#1a1a1a" title="Чёрный"><span style="background:#1a1a1a"></span></button>
+        </div>
+      </div>
+
+      <!-- Step 5: Font -->
+      <div class="fb__step">
+        <div class="fb__step-header">
+          <span class="fb__step-num">5</span>
+          <h3 class="fb__step-title">Шрифт</h3>
+        </div>
+        <div class="fb__fonts" id="fbFonts">
+          <button class="fb__font-btn fb__font-btn--active" data-font="'Arial', sans-serif" style="font-family:Arial">ABC abc</button>
+          <button class="fb__font-btn" data-font="'Georgia', serif" style="font-family:Georgia">ABC abc</button>
+          <button class="fb__font-btn" data-font="'Courier New', monospace" style="font-family:'Courier New'">ABC abc</button>
+          <button class="fb__font-btn" data-font="'Impact', sans-serif" style="font-family:Impact">ABC abc</button>
+        </div>
+      </div>
+
+      <!-- Step 6: Plate Number (optional) -->
+      <div class="fb__step">
+        <div class="fb__step-header">
+          <span class="fb__step-num">6</span>
+          <h3 class="fb__step-title">Номер (для примера)</h3>
+        </div>
+        <input
+          type="text"
+          class="fb__input"
+          id="fbInputPlate"
+          maxlength="12"
+          placeholder="A 012 BCD"
+          value="A 012 BCD"
+        >
+        <p class="fb__hint">Только для предпросмотра — номер не печатается</p>
+      </div>
+
+      <!-- Summary & Add to Cart -->
+      <div class="fb__summary">
+        <div class="fb__summary-row">
+          <span>Рамка</span>
+          <span id="fbSummaryColor">Чёрный</span>
+        </div>
+        <div class="fb__summary-row">
+          <span>Текст сверху</span>
+          <span id="fbSummaryTop">{{ section.settings.default_text_top }}</span>
+        </div>
+        <div class="fb__summary-row">
+          <span>Текст снизу</span>
+          <span id="fbSummaryBottom">{{ section.settings.default_text_bottom }}</span>
+        </div>
+        <div class="fb__summary-row fb__summary-row--total">
+          <span>Итого</span>
+          <span id="fbSummaryPrice">{{ section.settings.base_price }} Lei</span>
+        </div>
+
+        <div class="fb__quantity">
+          <label for="fbQty">Количество:</label>
+          <div class="fb__qty-wrap">
+            <button class="fb__qty-btn" id="fbQtyMinus" type="button">−</button>
+            <input type="number" class="fb__qty-input" id="fbQty" value="1" min="1" max="99">
+            <button class="fb__qty-btn" id="fbQtyPlus" type="button">+</button>
+          </div>
+        </div>
+
+        <button class="fb__add-btn" id="fbAddToCart" type="button">
+          Добавить в корзину
+        </button>
+        <div class="fb__cart-msg" id="fbCartMsg"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'frame-builder.js' | asset_url }}" defer></script>
+
+<script type="application/json" id="fbConfig">
+{
+  "basePrice": {{ section.settings.base_price | default: 150 }},
+  "textPrice": {{ section.settings.text_price | default: 50 }},
+  "productHandle": {{ section.settings.product | json }},
+  "currency": "Lei"
+}
+</script>
+
+{% schema %}
+{
+  "name": "Конструктор рамок",
+  "tag": "section",
+  "class": "fb-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "default_text_top",
+      "label": "Текст сверху по умолчанию",
+      "default": "MOLDOVA"
+    },
+    {
+      "type": "text",
+      "id": "default_text_bottom",
+      "label": "Текст снизу по умолчанию",
+      "default": "avtoramki.md"
+    },
+    {
+      "type": "number",
+      "id": "base_price",
+      "label": "Базовая цена (Lei)",
+      "default": 150
+    },
+    {
+      "type": "number",
+      "id": "text_price",
+      "label": "Доплата за текст (Lei)",
+      "default": 50
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Товар для добавления в корзину"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Конструктор рамок"
+    }
+  ]
+}
+{% endschema %}
