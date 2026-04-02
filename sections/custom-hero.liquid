@@ -2,9 +2,7 @@
 
 {%- style -%}
   .custom-hero {
-    {% if section.settings.min_height != blank %}
-    min-height: {{ section.settings.min_height }}vh;
-    {% endif %}
+    min-height: {{ section.settings.min_height }}px;
   }
 {%- endstyle -%}
 
@@ -120,11 +118,11 @@
     {
       "type": "range",
       "id": "min_height",
-      "min": 50,
-      "max": 100,
-      "step": 5,
-      "default": 85,
-      "unit": "vh",
+      "min": 350,
+      "max": 700,
+      "step": 10,
+      "default": 520,
+      "unit": "px",
       "label": "Минимальная высота"
     }
   ],

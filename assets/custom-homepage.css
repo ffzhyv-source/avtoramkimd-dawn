@@ -1,9 +1,194 @@
-/* ===== AVTORAMKI MD — Homepage ===== */
+/* ===== AVTORAMKI MD — Global Design System ===== */
+
+/* ---------- GLOBAL OVERRIDES ---------- */
+:root {
+  --avto-dark: #1a1a1a;
+  --avto-red: #c22d2d;
+  --avto-gray: #f5f4f2;
+  --avto-text: #2a2a2a;
+  --avto-muted: #888;
+  --avto-border: #e5e4e1;
+}
+
+/* Force consistent look across all pages */
+body {
+  color: var(--avto-text) !important;
+}
+
+.header {
+  background: var(--avto-dark) !important;
+  border-bottom: none !important;
+}
+
+.header * {
+  color: #fff !important;
+}
+
+.header__heading-link {
+  color: #fff !important;
+  font-weight: 800 !important;
+  font-size: 1.3rem !important;
+  letter-spacing: 1px !important;
+}
+
+.header__inline-menu .list-menu__item {
+  font-size: 0.78rem !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  padding: 0.5rem 1rem !important;
+  color: rgba(255,255,255,0.7) !important;
+  transition: color 0.2s !important;
+}
+
+.header__inline-menu .list-menu__item:hover,
+.header__inline-menu .header__active-menu-item {
+  color: #fff !important;
+}
+
+.header__icon {
+  color: rgba(255,255,255,0.7) !important;
+}
+
+.header__icon:hover {
+  color: #fff !important;
+}
+
+/* Announcement bar */
+.announcement-bar {
+  background: var(--avto-red) !important;
+  border: none !important;
+}
+
+.announcement-bar * {
+  color: #fff !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Remove header borders/lines */
+.header-wrapper {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.header--has-menu .header__inline-menu {
+  border: none !important;
+}
+
+/* ---------- GLOBAL SECTION SPACING ---------- */
+.section-template--*-padding {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* ---------- BUTTONS GLOBAL ---------- */
+.button, .shopify-challenge__button, .customer button, button.button {
+  border-radius: 2px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: none !important;
+}
+
+.button--primary {
+  background: var(--avto-dark) !important;
+  color: #fff !important;
+}
+
+.button--primary:hover {
+  background: #333 !important;
+}
+
+/* ---------- PRODUCT CARDS ---------- */
+.card--standard .card__inner {
+  border-radius: 0 !important;
+}
+
+.card__heading {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+}
+
+.price__regular .price-item--regular {
+  font-weight: 700 !important;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  background: var(--avto-dark) !important;
+  color: rgba(255,255,255,0.6) !important;
+}
+
+.footer * {
+  color: rgba(255,255,255,0.6) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+.footer h2, .footer .footer__heading {
+  color: #fff !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+}
+
+.footer a:hover {
+  color: #fff !important;
+}
+
+.footer .newsletter-form__field-wrapper input {
+  background: rgba(255,255,255,0.06) !important;
+  border-color: rgba(255,255,255,0.15) !important;
+  color: #fff !important;
+}
+
+.footer .newsletter-form__button {
+  background: var(--avto-red) !important;
+  color: #fff !important;
+}
+
+.footer .list-payment__item svg {
+  opacity: 0.5;
+}
+
+.footer-block__details-content a {
+  font-size: 0.9rem !important;
+}
+
+/* ---------- COLLECTION PAGE ---------- */
+.collection-hero {
+  padding: 2rem 0 1rem !important;
+}
+
+.collection-hero__title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* ---------- PRODUCT PAGE ---------- */
+.product__title {
+  font-size: 1.8rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.product__text {
+  font-size: 0.92rem !important;
+  line-height: 1.65 !important;
+  color: var(--avto-muted) !important;
+}
+
+/* ---------- CART PAGE ---------- */
+.cart__heading {
+  font-size: 1.6rem !important;
+  font-weight: 800 !important;
+}
 
 /* ---------- HERO ---------- */
 .custom-hero {
   position: relative;
-  min-height: 80vh;
+  min-height: 520px;
+  max-height: 600px;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
