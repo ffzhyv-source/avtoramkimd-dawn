@@ -1,9 +1,16 @@
 (function() {
   'use strict';
 
-  var configEl = document.getElementById('fbConfig');
-  if (!configEl) return;
-  var cfg = JSON.parse(configEl.textContent);
+  function init() {
+    var configEl = document.getElementById('fbConfig');
+    if (!configEl) return;
+    var cfg;
+    try {
+      cfg = JSON.parse(configEl.textContent);
+    } catch(e) {
+      console.error('Frame builder config error', e);
+      return;
+    }
 
   // State
   var state = {
@@ -178,9 +185,22 @@
           resetBtn();
         });
     } else {
-      // No product linked — try to find any product or show message
-      showMsg('Привяжите товар в настройках секции «Конструктор рамок»', true);
-      resetBtn();
+      // No product linked — search for any available product
+      fetch('/collections/all/products.json?limit=1')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.products && data.products.length > 0) {
+            var variantId = data.products[0].variants[0].id;
+            return addToCart(variantId, state.qty, properties);
+          } else {
+            showMsg('Нет товаров. Создайте товар в Shopify Admin.', true);
+            resetBtn();
+          }
+        })
+        .catch(function() {
+          showMsg('Привяжите товар в настройках секции «Конструктор рамок»', true);
+          resetBtn();
+        });
     }
   });
 
@@ -242,4 +262,11 @@
 
   // Initial render
   render();
+  } // end init
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

@@ -176,8 +176,6 @@
   </div>
 </div>
 
-<script src="{{ 'frame-builder.js' | asset_url }}" defer></script>
-
 <script type="application/json" id="fbConfig">
 {
   "basePrice": {{ section.settings.base_price | default: 150 }},
@@ -186,6 +184,7 @@
   "currency": "Lei"
 }
 </script>
+<script src="{{ 'frame-builder.js' | asset_url }}" defer></script>
 
 {% schema %}
 {

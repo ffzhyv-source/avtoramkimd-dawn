@@ -1,1 +1,1 @@
-{"sections":{"main":{"type":"frame-builder","settings":{}}},"order":["main"]}
+{ "sections": { "main": { "type": "frame-builder", "settings": { "default_text_top": "MOLDOVA", "default_text_bottom": "avtoramki.md", "base_price": 150, "text_price": 50 } } }, "order": ["main"] }
