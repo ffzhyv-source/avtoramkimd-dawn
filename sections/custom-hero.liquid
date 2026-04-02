@@ -20,7 +20,7 @@
       }}
     </div>
   {% else %}
-    <div class="custom-hero__bg" style="background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);"></div>
+    <div class="custom-hero__bg" style="background: #1b1b1b;"></div>
   {% endif %}
 
   <div class="custom-hero__content">
@@ -45,7 +45,6 @@
       {% if section.settings.button_label_1 != blank %}
         <a href="{{ section.settings.button_link_1 }}" class="custom-hero__btn custom-hero__btn--primary">
           {{ section.settings.button_label_1 }}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       {% endif %}
       {% if section.settings.button_label_2 != blank %}
